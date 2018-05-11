@@ -1,7 +1,22 @@
 #include <iostream>
-
+#include <cmath>
+#include <cstdlib>
 using namespace std;
 // we need should create something that represents a character to which values can be stored which will decide what endings will display.
+/* Add Structs
+Add Functions
+Add Arrays
+Commit GitHub
+Finish Story; with endings preferably before the finals week*/
+
+void logicCal();
+struc CharacterCreation	// data structure
+{
+	string CharName
+	int age
+	int hairColor
+}
+
 int a;
 
 int main()
@@ -37,4 +52,59 @@ int main()
     else{
         cout << "the world is a harsh place, and because of that you are now dead\n GAME OVER!\n";
     }
+    cin >> a;
+    if ( a==1 ){
+        cout << "Google is a nice choice! Get ready for some hard work!"//points
+    }
+    else if(a == 2){
+        cout << "meatypie.io is a cool choice, but not much growth will be obtained here"
+    }
+    else{
+     cout << "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+    cin >> a;
+    if ( a==1 ){
+      cout <<  "Time to graduate!\n";
+    }
+    else if( a==2 ){}
+    else{
+        cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+    cin >> a;
+    if (a == 1){
+        cout << "next project";
+    }
+    else if( a== 2){}
+    else{
+        cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+    cin >> a;
+    if ( a== 1){
+        cout << "personal life\n";
+    }
+    else if(a == 2){}
+    else{
+        cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+    cin >> a;
+    if (a == 1){
+        cout << "your getting old\n";
+    }
+    else if(a == 2){}
+    else{
+        cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+    cin >> a;
+    if (a ==1 ){
+        cout << "you die\n";
+    }
+    else if(a == 2){}
+    else{
+        cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
+    }
+	return 0;
+
 }
+// Handles calculation for LOgic, etc.
+int logicCal(int){
+};
