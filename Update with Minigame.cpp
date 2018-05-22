@@ -97,7 +97,7 @@ int main()
 
         } // we should make this a function so we don't need to keep typing it out.
     
-    void howtoplay();
+    howtoplay();
 
     cin >> a;
     if (a == 1){
@@ -116,13 +116,15 @@ int main()
                 return 0;
       };
       
-    void howtoplay();
+    howtoplay();
     
     cin >> a;
     
       if (a == 1) {
         cout << "programming is a good choice! lets get some practice!"; // make a mini game here or instantly add a value
         numberGame(miniGame);
+        
+        cout << "\n\nCongratulations!\n" << endl;
       }
       else if (a == 2){
         cout << "Good choice! not exactly where you should be, but generally the same thing\n";
@@ -131,11 +133,11 @@ int main()
       else{
         Deadend();
                 return 0;}
-    void howtoplay();
+    howtoplay();
     cin >> a;
 
       if ( a==1 ){
-        cout << "Google is a nice choice! Get ready for some hard work!";//points
+        cout << "Google is a nice choice! Get ready for some hard work!\n";//points
       }
       else if(a == 2){
         cout << "meatypie.io is a cool choice, but not much growth will be obtained here";
@@ -154,7 +156,7 @@ int main()
     else{
         cout<< "the world is a harsh place, and because of that you are now dead\n GAME OVER";
     }
-    void howtoplay();
+    howtoplay();
     cin >> a;
 
     if (a == 1){
@@ -164,7 +166,7 @@ int main()
     else{
     Deadend();
                 return 0;}
-    void howtoplay();
+    howtoplay();
     cin >> a;
     if ( a== 1){
         cout << "personal life\n";
@@ -172,9 +174,9 @@ int main()
     else if(a == 2){}
     else{
     Deadend();
-    void howtoplay();
+    howtoplay();
                 return 0;}
-    void howtoplay();
+    howtoplay();
     cin >> a;
     if (a == 1){
         cout << "your getting old\n";
