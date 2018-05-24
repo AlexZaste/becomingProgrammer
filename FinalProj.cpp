@@ -21,6 +21,7 @@ Finish Story; with endings preferably before the finals week*/
 void howtoplay(); // prints out instructions of how pick your turn
 void Deadend();   // prints out the ending text
 int numberGame(int);
+string getFileContents(ifstream&);
 
 struct Experience {
 	// Please define this?
@@ -37,7 +38,6 @@ int main()
 	string player;
 	int age;
 	char ans;
-	int logic[1] ={1};
 	int miniGame = 0; // for miniGame 1
 	Character.gpa = 0;
 
@@ -107,12 +107,11 @@ int main()
 	cout << "************************************************************************************************************************" << endl;
 	cin >> a;
 	if (a == 1) {
-		logic[1] = { 2 };
-		cout << "Logic added! \n you are now smarter!\n" << "Current Logic " << logic[1] << endl << "Nice! Now pick your classes!\n" << endl;
-
+		cout << "You decided to go to a community college!" << endl << "Now select which classes you are taking" << endl;
 	}
 	else if (a == 2) {
 		double gpa = Character.gpa + 0.5;// this is where the mini game function will go
+		cout << "GPA Added! \n You are now smarter!\n" << "Current GPA " << Character.gpa << end;;
 		cout << "Nice lets get some practice!\n";
 		cout << gpa;
 	}
@@ -158,10 +157,18 @@ int main()
 		Deadend();
 		return 0;
 	};
+	
+
+
 	cout << "It's time to graduate!\n\n";
 	cout << "Press 1 to graduate\n\n\n\n";
 
 	cin >> a;
+
+	ifstream Reader("Graduation.txt");             //Open file
+	string Art = getFileContents(Reader);       //Get file
+	cout << Art << endl;               //Print it to the screen
+	Reader.close();                           //Close file
 
 	if (a == 1) {
 		cout << "congratulations!\n\n";
