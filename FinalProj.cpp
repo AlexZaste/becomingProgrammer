@@ -192,7 +192,7 @@ int main()
       *gpa += 0.5;
 			cout << " You've created a very successful dating app! Not very fulfilling tho\n\n";
 			cout << "1.get married 2.stay single 3.go sky diving\n\n";
-      cout << "Here is your GPA" << * gpa << endl;
+      cout << "Here is your GPA " << * gpa << endl;
 		}
 
 		else {
@@ -202,7 +202,7 @@ int main()
 		howtoplay();
 		cin >> a;
 		if (a == 1) {
-			cout << "Nice! families are good motivations, but will make things a little more complicated.";
+			cout << "Nice! families are good motivations, but will make things a little more complicated.\n";
 		}
 		else if (a == 2) {
 			cout << "An honorable choice, but now you can really dig into your work\n\n";
@@ -219,20 +219,16 @@ int main()
 				cout << "Thanks to your exceptional academics you were able to think of things like no one else\n resulting in you creating the first ever computer capable of copying human memory\n";
 			}
 		}
-		else {
-			cout << "Good Game My friend\n\n";
-			return 0;
-		};
-		if (a == 2) {// check .math I believe is what its called
+		else if (a == 2) {// check .math I believe is what its called
 			if (Character.gpa == 4.0) {
 				cout << "Thanks to your mastery of math you've gotten all of your calculations correct within your computer";
 				cout << "you are old and dying, so you volunteer to the be the first human to have their mind transfered to your computer.";
 			}
 		}
-
 		else {
-			cout << "your calculations were off so your computer didn't quite work.\n";
-			cout << "good game my friend" << endl;
+      cout << "your calculations were off so your computer didn't quite work.\n";
+			cout << "Good Game My friend\n\n";
+			return 0;
 		};
 
 		cout << "You must now select which company you decided to stay with (Hint: Google, Intel, Microsoft)\n";
@@ -240,7 +236,7 @@ int main()
 
 		if (Character.GoogleExperience == "Google" || Character.GoogleExperience == "google") {//check to see if the .char is here I believe we said it would be just the word google if it is ==
 			cout << "The Transfer was a success Google made sure it worked! Thankfully you interned there!";
-			cout << "You win 100% you are now imortal and will live FOREVER, well maybe not exactly live, but yeah you'll be around forever./n/n";
+			cout << "You win 100% you are now imortal and will live FOREVER, well maybe not exactly live, but yeah you'll be around forever.\n\n";
 			cout << "********************************Fin*************************************************************************************************";
 		}
 		else {
