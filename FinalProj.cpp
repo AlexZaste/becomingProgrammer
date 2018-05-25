@@ -1,11 +1,10 @@
-#include "stdafx.h"
 #include <iostream>
 #include <cstdlib>
 #include <string>
 #include <ctime>
 #include <fstream>
 #include <algorithm>
-
+#include <cctype>
 
 using namespace std;
 
@@ -22,6 +21,7 @@ void howtoplay(); // prints out instructions of how pick your turn
 void Deadend();   // prints out the ending text
 int numberGame(int);
 string getFileContents(ifstream&);
+void guessLetter();
 
 struct Experience {
 	// Please define this?
@@ -40,13 +40,12 @@ int main()
 	char ans;
 	int miniGame = 0; // for miniGame 1
 	Character.gpa = 0;
-
-
+  double *gpa = &Character.gpa;
 
 	cout << "Welcome to Become a Programmer 2018!" << endl;
 	cout << "************************************************************************************************************************" << endl;
 	cout << "Game may contain socially unacceptable truths and harsh direct statements. Play at your own risk.\n"
-		 << "More importantly, try not to be offended. The following statements do not necessarily reflect the group members beliefs." << endl;
+		<< "More importantly, try not to be offended. The following statements do not necessarily reflect the group members beliefs." << endl;
 	cout << "************************************************************************************************************************" << endl;
 
 	// Checks if player old enough to play
@@ -111,9 +110,8 @@ int main()
 	}
 	else if (a == 2) {
 		double gpa = Character.gpa + 0.5;// this is where the mini game function will go
-		cout << "GPA Added! \n You are now smarter!\n" << "Current GPA " << Character.gpa << end;;
+		cout << "GPA Added! \n You are now smarter!\n" << "Current GPA " << gpa << endl;
 		cout << "Nice lets get some practice!\n";
-		cout << gpa;
 	}
 	else {
 		cout << "Harvard Law did not admit you into the program; now you're hopeless and useless..." << endl;
@@ -123,7 +121,7 @@ int main()
 
 	howtoplay();
 	cout << "1. Programming\n2. Math classes\n3. Painting Classes\n";
-	
+
 	cin >> a;
 
 	if (a == 1) {
@@ -135,6 +133,8 @@ int main()
 	}
 	else if (a == 2) {
 		cout << "Good choice! not exactly where you should be, but generally the same thing\n";
+		cout << "Now let's play a game! Guess the number! You have 20 tries!" << endl;
+		numberGame(miniGame);
 	}
 	else {
 		cout << "You became a painter NOT a programmer. Have fun!!" << endl;
@@ -157,98 +157,95 @@ int main()
 		Deadend();
 		return 0;
 	};
-	
-
 
 	cout << "It's time to graduate!\n\n";
 	cout << "Press 1 to graduate\n\n\n\n";
 
 	cin >> a;
-
 	ifstream Reader("Graduation.txt");             //Open file
 	string Art = getFileContents(Reader);       //Get file
-	cout << Art << endl;               //Print it to the screen
-	Reader.close();                           //Close file
+	cout << Art << endl;
 
-	if (a == 1) {
-		cout << "congratulations!\n\n";
-		cout << "Create a project you can be proud of now!\n\n";
-		cout << "1.artificalSam 2.sooka 3.nothing\n\n";
-	}
-	else {
-		Deadend();
-		return 0;
-	};
-	howtoplay();
-	cin >> a;
-
-	if (a == 1) {
-		Character.gpa + 0.5;
-		cout << "You create the first intelligent robot.\n\n";//value added <----
-		cout << "1.get married 2.stay single 3.go sky diving\n\n";
-	}
-	else if (a == 2) {
-		cout << " You've created a very successful dating app! Not very fulfilling tho\n\n";
-		cout << "1.get married 2.stay single 3.go sky diving\n\n";
-	}
-
-	else {
-		Deadend();
-		return 0;
-	}
-	howtoplay();
-	cin >> a;
-	if (a == 1) {
-		cout << "Nice! families are good motivations, but will make things a little more complicated.";
-	}
-	else if (a == 2) {
-		cout << "An honorable choice, but now you can really dig into your work\n\n";
-	}
-
-	else {
-		Deadend();
-		return 0;
-	}
-	howtoplay();//*****************************************************From this point on just have the if statement check different things in the structure*********************************************************************************************************************
-	cin >> a;//*****************************************************like if.gpa == 4.0 print out*********************************************************************************************************************
-	if (a == 1) {//check .gpa I believe its called
-		if (Character.gpa == 4.0) {
-			cout << "Thanks to your exceptional academics you were able to think of things like no one else\n resulting in you creating the first ever computer capable of copying human memory\n";
+		if (a == 1) {
+			cout << "congratulations!\n\n";
+			cout << "Create a project you can be proud of now!\n\n";
+			cout << "1.artificalSam 2.sooka 3.nothing\n\n";
 		}
-	}
-	else {
-		cout << "good game my friend\n\n";
-		return 0;
-	};
-	if (a == 2) {// check .math I believe is what its called
-		if (Character.gpa == 4.0) {
-			cout << "Thanks to your mastery of math you've gotten all of your calculations correct within your computer";
-			cout << "you are old and dying, so you volunteer to the be the first human to have their mind transfered to your computer.";
+		else {
+			Deadend();
+			return 0;
+		};
+		howtoplay();
+		cin >> a;
+
+		if (a == 1) {
+			Character.gpa + 0.5;
+			cout << "You create the first intelligent robot.\n\n";//value added <----
+			cout << "1.get married 2.stay single 3.go sky diving\n\n";
+      cout << Character.gpa << endl;
 		}
-	}
+		else if (a == 2) {
+			cout << " You've created a very successful dating app! Not very fulfilling tho\n\n";
+			cout << "1.get married 2.stay single 3.go sky diving\n\n";
+		}
 
-	else {
-		cout << "your calculations were off so your computer didn't quite work.\n";
-		cout << "good game my friend";
+		else {
+			Deadend();
+			return 0;
+		}
+		howtoplay();
+		cin >> a;
+		if (a == 1) {
+			cout << "Nice! families are good motivations, but will make things a little more complicated.";
+		}
+		else if (a == 2) {
+			cout << "An honorable choice, but now you can really dig into your work\n\n";
+		}
+
+		else {
+			Deadend();
+			return 0;
+		}
+		howtoplay();//*****************************************************From this point on just have the if statement check different things in the structure*********************************************************************************************************************
+		cin >> a;//*****************************************************like if.gpa == 4.0 print out*********************************************************************************************************************
+		if (a == 1) {//check .gpa I believe its called
+			if (Character.gpa == 4.0) {
+				cout << "Thanks to your exceptional academics you were able to think of things like no one else\n resulting in you creating the first ever computer capable of copying human memory\n";
+			}
+		}
+		else {
+			cout << "good game my friend\n\n";
+			return 0;
+		};
+		if (a == 2) {// check .math I believe is what its called
+			if (Character.gpa == 4.0) {
+				cout << "Thanks to your mastery of math you've gotten all of your calculations correct within your computer";
+				cout << "you are old and dying, so you volunteer to the be the first human to have their mind transfered to your computer.";
+			}
+		}
+
+		else {
+			cout << "your calculations were off so your computer didn't quite work.\n";
+			cout << "good game my friend";
+			return 0;
+		};
+
+		cout << "You must now select which company you decided to stay with (Hint: Google, Intel, Microsoft)\n";
+		cin >> Character.GoogleExperience; // Lets user input Google or Youtube or Microsoft to check which displays
+
+		if (Character.GoogleExperience == "Google") {//check to see if the .char is here I believe we said it would be just the word google if it is ==
+			cout << "The Transfer was a success Google made sure it worked! Thankfully you interned there!";
+			cout << "You win 100% you are now imortal and will live FOREVER, well maybe not exactly live, but yeah you'll be around forever./n/n";
+			cout << "********************************Fin*************************************************************************************************";
+		}
+		else {
+			cout << "Microsoft and Intel were subsumed by Google" << endl;
+			cout << "you should of did just a lil more with your life.\n\n";
+			cout << "Good game my friend\n\n";
+			return 0;
+		};
+
 		return 0;
-	};
-
-	cout << "You must now select which company you decided to stay with (Hint: Google, Intel, Microsoft)\n";
-	cin >> Character.GoogleExperience; // Lets user input Google or Youtube or Microsoft to check which displays
-	
-	if (Character.GoogleExperience == "Google") {//check to see if the .char is here I believe we said it would be just the word google if it is ==
-		cout << "The Transfer was a success Google made sure it worked! Thankfully you interned there!";
-		cout << "You win 100% you are now imortal and will live FOREVER, well maybe not exactly live, but yeah you'll be around forever./n/n";
-		cout << "********************************Fin*************************************************************************************************";
-	}
-	else {
-		cout << "Microsoft and Intel were subsumed by Google" << endl;
-		cout << "you should of did just a lil more with your life.\n\n";
-		cout << "Good game my friend\n\n";
-		return 0;
-	};
-
-	return 0;
 }
 
 // ************ FUNCTIONS *************
@@ -337,9 +334,60 @@ int numberGame(int) { //used in 125
 		return(0);
 	}
 };
+
+void guessLetter()
+{
+	string letters = "abcdefghijklmnopqrstuvwxyz";
+	string ranLetter = "";
+	int ranNum = 0;
+	string Guess = "";
+	int userNum = 0;
+
+	srand(static_cast<int>(time(0)));
+	ranNum = rand() % 26;
+
+	while (true) {
+		cout << "Enter your Guess now (not the watch): ";
+		getline(cin, Guess);
+
+
+		if (Guess.length() != 1)
+		{
+			cout << "You must enter exactly one letter" << endl;
+			continue;
+		}
+
+		if (!isalpha(Guess.at(0))) {
+			cout << "You must enter a letter" << endl;
+			continue;
+		}
+
+		userNum = tolower(Guess.at(0)) - 'a';
+
+		if (userNum > ranNum)
+		{
+			cout << "The correct letter comes before the letter " << Guess << "." << endl;
+		}
+		else if (userNum < ranNum)
+		{
+			cout << "The correct letter comes after the letter " << Guess << "." << endl;
+		}
+		else
+		{
+			cout << "You got the right letter!" << endl;
+			break;
+		}
+	}
+	exit(0);
+};
+
 string getFileContents(ifstream& File)
 {
+
 	string Lines = "";        //All lines
+
+//Print it to the screen
+									  //Close file
 
 	if (File)                      //Check if everything is good
 	{
@@ -357,7 +405,8 @@ string getFileContents(ifstream& File)
 	{
 		return "ERROR File does not exist.";
 	}
+	//Reader.close();  //Close File      
 };
 
-	
+
 
