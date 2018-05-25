@@ -94,9 +94,9 @@ int main()
 	cout << "************************************************************************************************************************" << endl;
 	if (a == 1) {
 		cout << "Nice you want to become a programmer!\n";
-		cout << "Now that you have that decided on pick how you will obtain the skills\n\n";
+		cout << "Now that you have decided on your career path, pick how you will obtain the skills\n\n";
 		cout << "Pick a school please\n\n";
-		cout << "1.Community College \n2.University\n3.Harvard Law\n\n\n"; // 1 dead end 2 mini game 3 continue on to the next step
+		cout << "1.Community College \n2.University\n3.Clown College\n\n\n"; // 1 dead end 2 mini game 3 continue on to the next step
 	}
 	else {
 		Deadend();
@@ -106,18 +106,20 @@ int main()
 	cout << "************************************************************************************************************************" << endl;
 	cin >> a;
 	if (a == 1) {
+    *gpa += 1.5;
 		cout << "You decided to go to a community college!" << endl << "Now select which classes you are taking" << endl;
 	}
 	else if (a == 2) {
-		double gpa = Character.gpa + 0.5;// this is where the mini game function will go
-		cout << "GPA Added! \n You are now smarter!\n" << "Current GPA " << gpa << endl;
+		*gpa += 1.5; // this is where the mini game function will go
+		cout << "GPA Added! \n You are now smarter!\n" << "Current GPA " << *gpa << endl;
 		cout << "Nice lets get some practice!\n";
 	}
 	else {
-		cout << "Harvard Law did not admit you into the program; now you're hopeless and useless..." << endl;
+		cout << "You became a rodeo clown and a bull gored you!! UGH!" << endl;
 		Deadend();
 		return 0;
 	};
+  cout << "Your current GPA is " << * gpa << " !!" << endl;
 
 	howtoplay();
 	cout << "1. Programming\n2. Math classes\n3. Painting Classes\n";
@@ -126,8 +128,8 @@ int main()
 
 	if (a == 1) {
 		cout << "programming is a good choice!\n Let's get some practice!\n\n"; // make a mini game here or instantly add a value
-		cout << "Initializing Guess a number game!\n" << "Guess a number between 1 and 100!\n You only have 20 tries!\n" << endl;
-		numberGame(miniGame);
+		cout << "Initializing Guess a Letter Game!\n" << endl;
+		guessLetter();
 
 		cout << "\n\nCongratulations!\n" << endl;
 	}
@@ -147,10 +149,12 @@ int main()
 	cin >> a;
 
 	if (a == 1) { // this part leads into graduation
+    * gpa += 1.5;
 		cout << "Google is a nice choice! Get ready for some hard work!\n";//points
 	}
 	else if (a == 2) {
-		cout << "meatypie.io is a cool choice, but not much growth will be obtained here\n\n";
+    *gpa += 1.0;
+		cout << "megaupload is a cool choice, but not much growth will be obtained here\n\n";
 
 	}
 	else {
@@ -179,14 +183,16 @@ int main()
 		cin >> a;
 
 		if (a == 1) {
-			Character.gpa + 0.5;
+			* gpa += 1.0;
 			cout << "You create the first intelligent robot.\n\n";//value added <----
 			cout << "1.get married 2.stay single 3.go sky diving\n\n";
-      cout << Character.gpa << endl;
+      cout << "Here is your GPA" << * gpa << endl;
 		}
 		else if (a == 2) {
+      *gpa += 0.5;
 			cout << " You've created a very successful dating app! Not very fulfilling tho\n\n";
 			cout << "1.get married 2.stay single 3.go sky diving\n\n";
+      cout << "Here is your GPA" << * gpa << endl;
 		}
 
 		else {
@@ -206,6 +212,7 @@ int main()
 			Deadend();
 			return 0;
 		}
+    cout << "Now choose "
 		howtoplay();//*****************************************************From this point on just have the if statement check different things in the structure*********************************************************************************************************************
 		cin >> a;//*****************************************************like if.gpa == 4.0 print out*********************************************************************************************************************
 		if (a == 1) {//check .gpa I believe its called
@@ -214,7 +221,7 @@ int main()
 			}
 		}
 		else {
-			cout << "good game my friend\n\n";
+			cout << "Good Game My friend\n\n";
 			return 0;
 		};
 		if (a == 2) {// check .math I believe is what its called
@@ -226,14 +233,13 @@ int main()
 
 		else {
 			cout << "your calculations were off so your computer didn't quite work.\n";
-			cout << "good game my friend";
-			return 0;
+			cout << "good game my friend" << endl;
 		};
 
 		cout << "You must now select which company you decided to stay with (Hint: Google, Intel, Microsoft)\n";
 		cin >> Character.GoogleExperience; // Lets user input Google or Youtube or Microsoft to check which displays
 
-		if (Character.GoogleExperience == "Google") {//check to see if the .char is here I believe we said it would be just the word google if it is ==
+		if (Character.GoogleExperience == "Google" || Character.GoogleExperience == "google") {//check to see if the .char is here I believe we said it would be just the word google if it is ==
 			cout << "The Transfer was a success Google made sure it worked! Thankfully you interned there!";
 			cout << "You win 100% you are now imortal and will live FOREVER, well maybe not exactly live, but yeah you'll be around forever./n/n";
 			cout << "********************************Fin*************************************************************************************************";
@@ -251,7 +257,7 @@ int main()
 // ************ FUNCTIONS *************
 
 void Deadend() { // used in 194,186,176,167,147,134,115,95
-	cout << "the world is a harsh place, and because of that you are now dead\n GAME OVER\n";
+	cout << "The World is a harsh place, and because of that you are now dead\n !!GAME OVER!!\n";
 	cout << "press any key to continue...\n";
 };
 
@@ -301,37 +307,18 @@ int numberGame(int) { //used in 125
 		// Check for tries.
 		if (tries >= 20) {
 			cout << "You ran out of tries!\n\n";
+      Deadend();
+      system("pause");
+      exit(0);
 		}
 		else {
 			// Or, user won.
 			cout << "Congratulations!! " << endl;
 			cout << "You got the right number in " << tries << " tries!\n";
-		}
-
-		while (true) { // Loop to ask user if he/she would like to play again.
-					   // Get user response.
-			cout << "Would you like to play again (Y/N)? ";
-			cin >> answer;
-			cin.ignore();
-
-			// Check if proper response.
-			if (answer == 'n' || answer == 'N' || answer == 'y' || answer == 'Y') {
-				break;
-			}
-			else {
-				cout << "Please enter \'Y\' or \'N\'...\n";
-			}
-		}
-
-		// Check user's input and run again or exit;
-		if (answer == 'n' || answer == 'N') {
-			cout << "Thank you for playing!";
-			break;
-		}
-		else {
-			cout << "\n\n\n";
+      return(0);
 		};
-		return(0);
+
+
 	}
 };
 
@@ -349,7 +336,6 @@ void guessLetter()
 	while (true) {
 		cout << "Enter your Guess now (not the watch): ";
 		getline(cin, Guess);
-
 
 		if (Guess.length() != 1)
 		{
@@ -378,7 +364,6 @@ void guessLetter()
 			break;
 		}
 	}
-	exit(0);
 };
 
 string getFileContents(ifstream& File)
@@ -387,7 +372,7 @@ string getFileContents(ifstream& File)
 	string Lines = "";        //All lines
 
 //Print it to the screen
-									  //Close file
+//Close file
 
 	if (File)                      //Check if everything is good
 	{
